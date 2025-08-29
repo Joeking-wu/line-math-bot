@@ -8,7 +8,11 @@ from linebot.models import (
     TemplateSendMessage,
     CarouselTemplate,
     CarouselColumn,
-    ButtonsTemplate, # 新增 ButtonsTemplate
+    ButtonsTemplate,
+    ImagemapSendMessage, # 新增 ImagemapSendMessage
+    BaseSize, # 新增 BaseSize
+    URIImagemapAction, # 新增 URIImagemapAction
+    ImagemapArea, # 新增 ImagemapArea
     URITemplateAction,
 )
 import os
@@ -42,8 +46,45 @@ def handle_message(event):
     # 將使用者傳來的文字轉為小寫並移除前後空白
     user_text = event.message.text.strip().lower()
 
+    # 如果使用者輸入 "圖片選單" 或 "image"
+    if user_text in ["圖片選單", "image"]:
+        # 圖片選單的圖片網址
+        # 建議使用您自己製作的圖片，並上傳到可公開存取的空間
+        image_url = "https://placehold.co/1040x1040/EEEEEE/333333?text=My+Game+Menu"
+        
+        # 建立一個 ImagemapSendMessage 訊息
+        imagemap_message = ImagemapSendMessage(
+            base_url=image_url.rsplit('/', 1)[0],
+            alt_text='網頁遊戲選單',
+            base_size=BaseSize(height=1040, width=1040),
+            actions=[
+                # 第一個按鈕 (加法遊戲)
+                URIImagemapAction(
+                    link_uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html',
+                    area=ImagemapArea(x=0, y=0, width=1040, height=260)
+                ),
+                # 第二個按鈕 (減法遊戲)
+                URIImagemapAction(
+                    link_uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html',
+                    area=ImagemapArea(x=0, y=261, width=1040, height=260)
+                ),
+                # 第三個按鈕 (寶可夢遊戲)
+                URIImagemapAction(
+                    link_uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html',
+                    area=ImagemapArea(x=0, y=522, width=1040, height=260)
+                ),
+                # 第四個按鈕 (時鐘遊戲)
+                URIImagemapAction(
+                    link_uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html',
+                    area=ImagemapArea(x=0, y=783, width=1040, height=260)
+                ),
+            ]
+        )
+        # 回覆 Imagemap 訊息
+        line_bot_api.reply_message(event.reply_token, imagemap_message)
+
     # 如果使用者輸入 "選單" 或 "menu"
-    if user_text in ["選單", "menu"]:
+    elif user_text in ["選單", "menu"]:
         # 建立一個按鈕樣板訊息
         buttons_template = TemplateSendMessage(
             alt_text='課程遊戲選單',
@@ -52,7 +93,6 @@ def handle_message(event):
                 title='我的網頁遊戲',
                 text='請選擇您想玩的遊戲：',
                 actions=[
-                    # 設定按鈕動作，使用 URITemplateAction 連結到您的網頁遊戲
                     URITemplateAction(
                         label='加法遊戲',
                         uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html'
@@ -72,15 +112,15 @@ def handle_message(event):
                 ]
             )
         )
-        # 回覆按鈕樣板訊息
         line_bot_api.reply_message(event.reply_token, buttons_template)
+
+    # 如果使用者輸入 "遊戲選單" 或 "game"
     elif user_text in ["遊戲選單", "game"]:
         # 輪播樣板訊息 (保留您原本的程式碼)
         carousel_template = TemplateSendMessage(
             alt_text='遊戲選單',
             template=CarouselTemplate(
                 columns=[
-                    # 第一排 3 個遊戲
                     CarouselColumn(
                         title='數學與遊戲',
                         text='第一排遊戲',
@@ -99,7 +139,6 @@ def handle_message(event):
                             ),
                         ]
                     ),
-                    # 第二排 3 個遊戲
                     CarouselColumn(
                         title='數學與遊戲',
                         text='第二排遊戲',
