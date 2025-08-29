@@ -32,7 +32,7 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        return 'Error', 400
+        abort(400)
     except Exception as e:
         print("Error:", e)
         return 'Error', 200 
@@ -147,6 +147,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
