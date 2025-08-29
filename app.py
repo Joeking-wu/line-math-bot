@@ -1,12 +1,12 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
-
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, URITemplateAction
 import os
 
 app = Flask(__name__)
 
+# 從環境變數讀取
 line_bot_api = LineBotApi(os.environ['LINE_CHANNEL_ACCESS_TOKEN'])
 handler = WebhookHandler(os.environ['LINE_CHANNEL_SECRET'])
 
@@ -14,24 +14,94 @@ handler = WebhookHandler(os.environ['LINE_CHANNEL_SECRET'])
 def callback():
     signature = request.headers.get('X-Line-Signature', '')
     body = request.get_data(as_text=True)
-    
+
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        abort(400)  # LINE 簽名驗證失敗
+        abort(400)
     except Exception as e:
         print("Error:", e)
-        abort(500)  # 其他錯誤
-    
-    return 'OK', 200  # 必須回傳 200
+        abort(500)
+
+    return 'OK', 200
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # 簡單回覆測試
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=f"你傳的是：{event.message.text}")
-    )
+    if event.message.text == "遊戲選單":
+        carousel_template = TemplateSendMessage(
+            alt_text='遊戲選單',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        title='數學遊戲',
+                        text='加法 GAME',
+                        actions=[
+                            URITemplateAction(
+                                label='玩加法',
+                                uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        title='數學遊戲',
+                        text='減法 GAME',
+                        actions=[
+                            URITemplateAction(
+                                label='玩減法',
+                                uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        title='寶可夢遊戲',
+                        text='寶可夢 GAME',
+                        actions=[
+                            URITemplateAction(
+                                label='玩寶可夢',
+                                uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        title='時鐘遊戲',
+                        text='時鐘 GAME',
+                        actions=[
+                            URITemplateAction(
+                                label='玩時鐘',
+                                uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        title='九九乘法表遊戲',
+                        text='九九乘法表 GAME',
+                        actions=[
+                            URITemplateAction(
+                                label='玩九九乘法表',
+                                uri='https://joeking-wu.github.io/multiplication-game/99_50.html'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        title='小朋友珠算入門',
+                        text='小朋友珠算入門',
+                        actions=[
+                            URITemplateAction(
+                                label='小朋友珠算入門',
+                                uri='https://joeking-wu.github.io/multiplication-game/Abacus.html'
+                            )
+                        ]
+                    ),
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, carousel_template)
+    else:
+        # 預設回覆
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f"你傳的是：{event.message.text}")
+        )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
