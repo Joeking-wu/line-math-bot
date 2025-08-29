@@ -50,7 +50,7 @@ def handle_message(event):
     if user_text in ["圖片選單", "image"]:
         # 圖片選單的圖片網址
         # 建議使用您自己製作的圖片，並上傳到可公開存取的空間
-        image_url = "https://github.com/Joeking-wu/line-math-bot/blob/main/blue.png?raw=true"
+        image_url = "https://github.com/Joeking-wu/line-math-bot/blob/main"
         
         # 建立一個 ImagemapSendMessage 訊息
         imagemap_message = ImagemapSendMessage(
@@ -170,5 +170,6 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
