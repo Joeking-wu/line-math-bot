@@ -27,71 +27,50 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "遊戲選單":
+    user_text = event.message.text.strip().lower()
+    if user_text in ["遊戲選單", "game"]:
         carousel_template = TemplateSendMessage(
             alt_text='遊戲選單',
             template=CarouselTemplate(
                 columns=[
+                    # 第一排 3 個遊戲
                     CarouselColumn(
-                        title='數學遊戲',
-                        text='加法 GAME',
+                        title='數學與遊戲',
+                        text='第一排遊戲',
                         actions=[
                             URITemplateAction(
-                                label='玩加法',
+                                label='加法GAME',
                                 uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        title='數學遊戲',
-                        text='減法 GAME',
-                        actions=[
+                            ),
                             URITemplateAction(
-                                label='玩減法',
+                                label='減法GAME',
                                 uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        title='寶可夢遊戲',
-                        text='寶可夢 GAME',
-                        actions=[
+                            ),
                             URITemplateAction(
-                                label='玩寶可夢',
+                                label='寶可夢GAME',
                                 uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html'
-                            )
+                            ),
                         ]
                     ),
+                    # 第二排 3 個遊戲
                     CarouselColumn(
-                        title='時鐘遊戲',
-                        text='時鐘 GAME',
+                        title='數學與遊戲',
+                        text='第二排遊戲',
                         actions=[
                             URITemplateAction(
-                                label='玩時鐘',
+                                label='時鐘GAME',
                                 uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        title='九九乘法表遊戲',
-                        text='九九乘法表 GAME',
-                        actions=[
+                            ),
                             URITemplateAction(
-                                label='玩九九乘法表',
+                                label='九九乘法表GAME',
                                 uri='https://joeking-wu.github.io/multiplication-game/99_50.html'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        title='小朋友珠算入門',
-                        text='小朋友珠算入門',
-                        actions=[
+                            ),
                             URITemplateAction(
                                 label='小朋友珠算入門',
                                 uri='https://joeking-wu.github.io/multiplication-game/Abacus.html'
-                            )
+                            ),
                         ]
-                    ),
+                    )
                 ]
             )
         )
