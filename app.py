@@ -14,6 +14,7 @@ from linebot.models import (
     URIImagemapAction,
     ImagemapArea,
     URITemplateAction,
+    MessageImagemapAction,
 )
 import os
 
@@ -31,10 +32,10 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        abort(400)
+        return 'Error', 400
     except Exception as e:
         print("Error:", e)
-        abort(500)
+        return 'Error', 200 
 
     return 'OK', 200
 
@@ -146,6 +147,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
