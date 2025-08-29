@@ -61,17 +61,17 @@ def handle_message(event):
                 # 第一個按鈕 (加法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html',
-                    area=ImagemapArea(x=0, y=0, width=200, height=86)
+                    area=ImagemapArea(x=0, y=0, width=200, height=15)
                 ),
                 # 第二個按鈕 (減法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html',
-                    area=ImagemapArea(x=0, y=0, width=200, height=86)
+                    area=ImagemapArea(x=0, y=25, width=200, height=15)
                 ),
                 # 第三個按鈕 (寶可夢遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html',
-                    area=ImagemapArea(x=0, y=100, width=1040, height=260)
+                    area=ImagemapArea(x=0, y=50, width=1040, height=15)
                 ),
                 # 第四個按鈕 (時鐘遊戲)
                 URIImagemapAction(
@@ -170,4 +170,5 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
