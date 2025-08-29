@@ -45,6 +45,7 @@ def handle_message(event):
     if user_text in ["圖片選單", "image"]:
         # 這裡使用您提供的圖片網址。
         image_url = "https://i.imgur.com/mB9yDO0.png"
+        text = "#FFB8D1"
         print(image_url.rsplit('/', 1)[0])
         # 建立一個 ImagemapSendMessage 訊息
         # BaseSize 的 height 和 width 必須與您圖片的實際尺寸相符。
@@ -153,6 +154,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
