@@ -146,7 +146,10 @@ def handle_message(event):
         )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 5000))  # Render 會自動給 PORT
+    app.run(host="0.0.0.0", port=port)
+
+
 
 
 
