@@ -44,34 +44,28 @@ def handle_message(event):
 
     if user_text in ["圖片選單", "image"]:
         # 這裡使用您提供的圖片網址。
-        image_url = "https://joeking-wu.github.io/multiplication-game/blue1.png"
-        
+        image_url = "https://i.imgur.com/mB9yDO0.png"
+        print(image_url.rsplit('/', 1)[0])
         # 建立一個 ImagemapSendMessage 訊息
         # BaseSize 的 height 和 width 必須與您圖片的實際尺寸相符。
         # 您的圖片尺寸為 1040x235 像素。
         imagemap_message = ImagemapSendMessage(
-            base_url=image_url.rsplit('/', 1)[0],
-            alt_text='網頁遊戲選單',
-            base_size=BaseSize(height=235, width=1040),
+            base_url=image_url,
+            alt_text='ImageMap Example',
+            base_size=BaseSize(height=1040, width=1040),
             actions=[
                 # 設定 Imagemap 的點擊區域和連結
                 # 假設您的圖片有四個按鈕，水平排列。
+                MessageImagemapAction(
+                                                                text=text,
+                                                                area=ImagemapArea(
+                                                                    x=0, y=0, width=1040/5, height=1040
+                                                                )
+                                                            ),
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html',
-                    area=ImagemapArea(x=0, y=0, width=260, height=235)
-                ),
-                URIImagemapAction(
-                    link_uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html',
-                    area=ImagemapArea(x=260, y=0, width=260, height=235)
-                ),
-                URIImagemapAction(
-                    link_uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html',
-                    area=ImagemapArea(x=520, y=0, width=260, height=235)
-                ),
-                URIImagemapAction(
-                    link_uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html',
-                    area=ImagemapArea(x=780, y=0, width=260, height=235)
-                ),
+                    area=ImagemapArea(x=int(1040*0.8), y=0, width=int(1040/5), height=1040)
+                )
             ]
         )
         # 回覆 Imagemap 訊息
@@ -159,5 +153,6 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
