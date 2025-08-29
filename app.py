@@ -44,7 +44,7 @@ def handle_message(event):
 
     if user_text in ["圖片選單", "image"]:
         # 這裡使用您提供的圖片網址。
-        image_url = "https://joeking-wu.github.io/line-math-bot/blue1.png"
+        image_url = "https://joeking-wu.github.io/multiplication-game/blue1.png"
         
         # 建立一個 ImagemapSendMessage 訊息
         # BaseSize 的 height 和 width 必須與您圖片的實際尺寸相符。
@@ -77,7 +77,7 @@ def handle_message(event):
         # 回覆 Imagemap 訊息
         line_bot_api.reply_message(event.reply_token, imagemap_message)
 
-    elif user_text in ["選單", "menu"]:
+    elif user_text in ["選單1", "menu"]:
         buttons_template = TemplateSendMessage(
             alt_text='課程遊戲選單',
             template=ButtonsTemplate(
@@ -159,4 +159,5 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
