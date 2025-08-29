@@ -56,10 +56,10 @@ def handle_message(event):
         alt_text='數學機器人選單',
         base_size=BaseSize(height=1040, width=1040),
         actions=[
-            MessageImagemapAction(text='基礎運算', area=ImagemapArea(x=0, y=0, width=520, height=520)),
-            MessageImagemapAction(text='進階數學', area=ImagemapArea(x=520, y=0, width=520, height=520)),
-            MessageImagemapAction(text='方程式求解', area=ImagemapArea(x=0, y=520, width=520, height=520)),
-            MessageImagemapAction(text='圖形計算', area=ImagemapArea(x=520, y=520, width=520, height=520))
+            MessageImagemapAction(text='基礎運算', area=ImagemapArea(x=0, y=0, width=220, height=520)),
+            MessageImagemapAction(text='進階數學', area=ImagemapArea(x=520, y=0, width=220, height=520)),
+            MessageImagemapAction(text='方程式求解', area=ImagemapArea(x=0, y=520, width=220, height=520)),
+            MessageImagemapAction(text='圖形計算', area=ImagemapArea(x=520, y=520, width=220, height=520))
         ]
         )
         # 回覆 Imagemap 訊息
@@ -148,6 +148,7 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Render 會自動給 PORT
     app.run(host="0.0.0.0", port=port)
+
 
 
 
