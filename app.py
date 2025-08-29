@@ -58,7 +58,7 @@ def handle_message(event):
                 # 設定 Imagemap 的點擊區域和連結
                 # 假設您的圖片有四個按鈕，水平排列。
                 MessageImagemapAction(
-                                                               text="#FFB8D1",
+                                                               text="FFB8D1",
                                                                 area=ImagemapArea(
                                                                     x=0, y=0, width=1040/5, height=235
                                                                 )
@@ -154,6 +154,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
