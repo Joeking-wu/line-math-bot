@@ -43,7 +43,7 @@ def callback():
 def handle_message(event):
     user_text = event.message.text.strip().lower()
 
-    if user_text in ["圖片選單", "image"]:
+    if user_text in ["圖片選單", "1"]:
         # 這裡使用您提供的圖片網址。
         image_url = "https://i.imgur.com/mB9yDO0.png"
 
@@ -147,6 +147,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
