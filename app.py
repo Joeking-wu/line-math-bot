@@ -50,28 +50,28 @@ def handle_message(event):
     if user_text in ["圖片選單", "image"]:
         # 圖片選單的圖片網址
         # 建議使用您自己製作的圖片，並上傳到可公開存取的空間
-        image_url = "https://github.com/Joeking-wu/line-math-bot/blob/main"
+        image_url = "https://raw.githubusercontent.com/Joeking-wu/line-math-bot/main/blue1.png"
         
         # 建立一個 ImagemapSendMessage 訊息
         imagemap_message = ImagemapSendMessage(
             base_url=image_url.rsplit('/', 1)[0],
             alt_text='網頁遊戲選單',
-            base_size=BaseSize(height=86, width=380),
+            base_size=BaseSize(height=235, width=1040),
             actions=[
                 # 第一個按鈕 (加法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html',
-                    area=ImagemapArea(x=0, y=0, width=200, height=15)
+                    area=ImagemapArea(x=0, y=0, width=200, height=100)
                 ),
                 # 第二個按鈕 (減法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html',
-                    area=ImagemapArea(x=0, y=25, width=200, height=15)
+                    area=ImagemapArea(x=0, y=120, width=200, height=100)
                 ),
                 # 第三個按鈕 (寶可夢遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html',
-                    area=ImagemapArea(x=0, y=50, width=1040, height=15)
+                    area=ImagemapArea(x=0, y=240, width=1040, height=100)
                 ),
                 # 第四個按鈕 (時鐘遊戲)
                 URIImagemapAction(
@@ -170,6 +170,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
