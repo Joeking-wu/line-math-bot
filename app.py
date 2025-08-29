@@ -51,7 +51,7 @@ def handle_message(event):
         # BaseSize 的 height 和 width 必須與您圖片的實際尺寸相符。
         # 您的圖片尺寸為 1040x235 像素。
         imagemap_message = ImagemapSendMessage(
-    base_url='https://i.imgur.com/mB9yDO0',
+    base_url='https://joeking-wu.github.io/line-math-bot/imagemap/1040',
     alt_text='this is an imagemap',
     base_size=BaseSize(height=1040, width=1040),
     actions=[
@@ -154,6 +154,7 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
