@@ -50,33 +50,33 @@ def handle_message(event):
     if user_text in ["圖片選單", "image"]:
         # 圖片選單的圖片網址
         # 建議使用您自己製作的圖片，並上傳到可公開存取的空間
-        image_url = "https://placehold.co/1040x1040/EEEEEE/333333?text=My+Game+Menu"
+        image_url = "https://github.com/Joeking-wu/line-math-bot/blob/main/blue.png?raw=true"
         
         # 建立一個 ImagemapSendMessage 訊息
         imagemap_message = ImagemapSendMessage(
             base_url=image_url.rsplit('/', 1)[0],
             alt_text='網頁遊戲選單',
-            base_size=BaseSize(height=1040, width=1040),
+            base_size=BaseSize(height=86, width=380),
             actions=[
                 # 第一個按鈕 (加法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html',
-                    area=ImagemapArea(x=0, y=0, width=1040, height=260)
+                    area=ImagemapArea(x=0, y=0, width=200, height=86)
                 ),
                 # 第二個按鈕 (減法遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html',
-                    area=ImagemapArea(x=0, y=261, width=1040, height=260)
+                    area=ImagemapArea(x=0, y=0, width=200, height=86)
                 ),
                 # 第三個按鈕 (寶可夢遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html',
-                    area=ImagemapArea(x=0, y=522, width=1040, height=260)
+                    area=ImagemapArea(x=0, y=100, width=1040, height=260)
                 ),
                 # 第四個按鈕 (時鐘遊戲)
                 URIImagemapAction(
                     link_uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html',
-                    area=ImagemapArea(x=0, y=783, width=1040, height=260)
+                    area=ImagemapArea(x=0, y=200, width=200, height=86)
                 ),
             ]
         )
@@ -170,3 +170,4 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
