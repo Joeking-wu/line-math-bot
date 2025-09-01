@@ -36,6 +36,7 @@ def callback():
         abort(400)
     except Exception as e:
         print("Error:", e)
+        traceback.print_exc()   # ✅ 印出完整錯誤堆疊
         return 'Error', 200 
 
     return 'OK', 200
@@ -66,7 +67,7 @@ def handle_message(event):
         # 回覆 Imagemap 訊息
         line_bot_api.reply_message(event.reply_token, imagemap_message)
 
-    elif user_text in ["選單1", "menu"]:
+    elif user_text in ["選單", "menu", "m"]:
         buttons_template = FlexSendMessage(
             alt_text='hello',
             contents={
@@ -84,7 +85,7 @@ def handle_message(event):
                         "text": "加減乘除運算(+ - * /)",
                         "weight": "bold",
                         "size": "sm",
-                        "wrap": true
+                        "wrap": True
                       },
                       {
                         "type": "button",
@@ -121,7 +122,7 @@ def handle_message(event):
                         "text": "生字功能與遊戲",
                         "weight": "bold",
                         "size": "sm",
-                        "wrap": true
+                        "wrap": True
                       },
                       {
                         "type": "button",
@@ -193,7 +194,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
-    elif user_text in ["遊戲選單", "game"]:
+    elif user_text in ["遊戲選單", "game", "g"]:
         carousel_template = TemplateSendMessage(
             alt_text='遊戲選單',
             template=CarouselTemplate(
