@@ -15,6 +15,7 @@ from linebot.models import (
     ImagemapArea,
     URITemplateAction,
     MessageImagemapAction,
+    FlexSendMessage, BubbleContainer, ImageComponent
 )
 import os
 
@@ -66,32 +67,111 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, imagemap_message)
 
     elif user_text in ["選單1", "menu"]:
-        buttons_template = TemplateSendMessage(
-            alt_text='課程遊戲選單',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://i.imgur.com/3s1uL7y.png',
-                title='我的網頁遊戲',
-                text='請選擇您想玩的遊戲：',
-                actions=[
-                    URITemplateAction(
-                        label='加法遊戲',
-                        uri='https://joeking-wu.github.io/multiplication-game/math_game_add.html'
-                    ),
-                    URITemplateAction(
-                        label='減法遊戲',
-                        uri='https://joeking-wu.github.io/multiplication-game/math_game_dec.html'
-                    ),
-                    URITemplateAction(
-                        label='寶可夢遊戲',
-                        uri='https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html'
-                    ),
-                    URITemplateAction(
-                        label='時鐘遊戲',
-                        uri='https://joeking-wu.github.io/multiplication-game/clock_matching_game.html'
-                    )
-                ]
-            )
-        )
+     buttons_template = FlexSendMessage(
+        alt_text='hello',
+    contents={
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://developers-resource.landpress.line.me/fx/img/01_1_cafe.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://line.me/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Brown Cafe",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gray_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "4.0",
+            "size": "sm",
+            "color": "#999999",
+            "margin": "md",
+            "flex": 0
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "secondary",
+        "action": {
+          "type": "uri",
+          "label": "add",
+          "uri": "https://joeking-wu.github.io/multiplication-game/math_game_add.html"
+        },
+        "height": "sm",
+        "color": "#7e96e0"
+      },
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "dEC",
+          "uri": "https://joeking-wu.github.io/multiplication-game/math_game_dec.html"
+        },
+        "color": "#7e96e0"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
+    )
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
     elif user_text in ["遊戲選單", "game"]:
@@ -148,6 +228,7 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Render 會自動給 PORT
     app.run(host="0.0.0.0", port=port)
+
 
 
 
