@@ -141,7 +141,7 @@ def handle_message(event):
                     "contents": [
                         {
                             "type": "button",
-                            "style": "secondary",
+                            "style": "primary",
                             "action": {
                                 "type": "uri",
                                 "label": "add",
@@ -152,7 +152,7 @@ def handle_message(event):
                         },
                         {
                             "type": "button",
-                            "style": "secondary",
+                            "style": "primary",
                             "height": "sm",
                             "action": {
                                 "type": "uri",
@@ -230,3 +230,4 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Render 會自動給 PORT
     app.run(host="0.0.0.0", port=port)
+
