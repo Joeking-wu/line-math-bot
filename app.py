@@ -70,124 +70,126 @@ def handle_message(event):
         buttons_template = FlexSendMessage(
             alt_text='hello',
             contents={
-          "type": "carousel",
-          "contents": [
-            {
-              "type": "bubble",
-              "size": "micro",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "加減乘除運算(+ - * /)",
-                    "weight": "bold",
-                    "size": "sm",
-                    "wrap": true
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "加法運轉 +",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/math_game_add.html"
-                    },
-                    "style": "primary",
-                    "color": "#7e96e0"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "減法運算 -",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/math_game_dec.html"
-                    },
-                    "style": "primary",
-                    "color": "#a2b4eb"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "九九乘法表 *",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/99_50.html"
-                    },
-                    "style": "primary",
-                    "color": "#7e96e0"
-                  },
-                  {
-                    "type": "text",
-                    "text": "生字功能與遊戲",
-                    "weight": "bold",
-                    "size": "sm",
-                    "wrap": true
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "寶可夢生字",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html"
-                    },
-                    "color": "#4cd95e",
-                    "style": "primary"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "生字查詢",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/found_2.html"
-                    },
-                    "color": "#83e690",
-                    "style": "primary"
+              "type": "carousel",
+              "contents": [
+                {
+                  "type": "bubble",
+                  "size": "micro",
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "加減乘除運算(+ - * /)",
+                        "weight": "bold",
+                        "size": "sm",
+                        "wrap": true
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "加法運轉 +",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/math_game_add.html"
+                        },
+                        "style": "primary",
+                        "color": "#7e96e0"
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "減法運算 -",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/math_game_dec.html"
+                        },
+                        "style": "primary",
+                        "color": "#a2b4eb"
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "九九乘法表 *",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/99_50.html"
+                        },
+                        "style": "primary",
+                        "color": "#7e96e0"
+                      },
+                      {
+                        "type": "text",
+                        "text": "生字功能與遊戲",
+                        "weight": "bold",
+                        "size": "sm",
+                        "wrap": true
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "寶可夢生字",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/pokemon_vocab_game.html"
+                        },
+                        "color": "#4cd95e",
+                        "style": "primary"
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "生字查詢",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/found_2.html"
+                        },
+                        "color": "#83e690",
+                        "style": "primary"
+                      }
+                    ],
+                    "spacing": "sm",
+                    "paddingAll": "13px"
                   }
-                ],
-                "spacing": "sm",
-                "paddingAll": "13px"
-              }
-            },
-            {
-              "type": "bubble",
-              "size": "micro",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "其它",
-                    "weight": "bold",
-                    "size": "sm"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "時鐘(整點、半點)",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/clock_matching_game.html"
-                    },
-                    "style": "primary",
-                    "color": "#4cd95e"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "小朋友珠算入門",
-                      "uri": "https://joeking-wu.github.io/multiplication-game/Abacus.html"
-                    },
-                    "color": "#83e690",
-                    "style": "primary"
+                },
+                {
+                  "type": "bubble",
+                  "size": "micro",
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "其它",
+                        "weight": "bold",
+                        "size": "sm"
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "時鐘(整點、半點)",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/clock_matching_game.html"
+                        },
+                        "style": "primary",
+                        "color": "#4cd95e"
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "小朋友珠算入門",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/Abacus.html"
+                        },
+                        "color": "#83e690",
+                        "style": "primary"
+                      }
+                    ],
+                    "spacing": "sm",
+                    "paddingAll": "13px"
                   }
-                ],
-                "spacing": "sm",
-                "paddingAll": "13px"
-              }
+                }
+              ]
             }
-          ]
-        }
+        )
+            
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
