@@ -143,7 +143,17 @@ def handle_message(event):
                         },
                         "color": "#83e690",
                         "style": "primary"
-                      }
+                      },
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "注音符號聽力",
+                          "uri": "https://joeking-wu.github.io/multiplication-game/Zhuyinlearninggame.html"
+                        },
+                        "color": "#4cd95e",
+                        "style": "primary"
+                      },
                     ],
                     "spacing": "sm",
                     "paddingAll": "13px"
@@ -248,3 +258,4 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Render 會自動給 PORT
     app.run(host="0.0.0.0", port=port)
+
