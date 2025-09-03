@@ -249,6 +249,13 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token, carousel_template)
+
+    elif user_text in ["help", "h"]:
+        help_message = """目前支援的指令有：
+- 選單 或 menu 或 m：顯示按鈕格式的 遊戲 選單
+- 遊戲選單 或 game 或 g：顯示輪播卡片格式的 遊戲 選單
+"""
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=help_message))
     else:
         line_bot_api.reply_message(
             event.reply_token,
